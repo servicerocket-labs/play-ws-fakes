@@ -1,5 +1,6 @@
 package com.servicerocket.play.ws.fakes
 
+import akka.stream.scaladsl.Source
 import akka.util.ByteString
 import play.api.http.Status.OK
 import play.api.libs.json.{JsNull, JsValue}
@@ -19,8 +20,10 @@ import scala.xml.Elem
   */
 case class FakeWSResponse(status: Int = OK,
                           statusText: String = "Success",
-                          body: String = "", json:
-                          JsValue = JsNull)
+                          body: String = "",
+                          json: JsValue = JsNull,
+                          source: Source[ByteString, _] = null,
+                          headers: Map[String, Seq[String]] = Map())
   extends WSResponse {
 
   override def underlying[T]: T = null.asInstanceOf[T]
@@ -33,7 +36,9 @@ case class FakeWSResponse(status: Int = OK,
 
   val xml: Elem = null
   val cookies: Seq[WSCookie] = Seq()
-  val allHeaders: Map[String, Seq[String]] = Map[String, Seq[String]]()
+  val allHeaders: Map[String, Seq[String]] = headers
+
+  override def bodyAsSource: Source[ByteString, _] = source
 
 }
 
