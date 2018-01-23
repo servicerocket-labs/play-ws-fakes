@@ -112,7 +112,8 @@ class FakeWSRequest() extends WSRequest {
     * @return This case class intact if expectations are met.
     * @throws IllegalStateException In case of failed verifications.
     */
-  def withHeaders(headers: (String, String)*) =
+  def withHeaders(headers: (String, String)*) = {
+    this.headers = headers.toMap.mapValues(Seq(_))
     expectedContentType match {
       case None =>
         this
@@ -124,6 +125,7 @@ class FakeWSRequest() extends WSRequest {
             this
         }
     }
+  }
 
   override def withHttpHeaders(headers: (String, String)*) = withHeaders(headers: _*)
 
@@ -176,7 +178,8 @@ class FakeWSRequest() extends WSRequest {
   val auth = None
   val body: WSBody = EmptyBody
   val method = ""
-  val headers = Map[String, Seq[String]]()
+
+  var headers: Map[String, Seq[String]] = Map.empty
 
   override def withQueryStringParameters(parameters: (String, String)*) = this
 
