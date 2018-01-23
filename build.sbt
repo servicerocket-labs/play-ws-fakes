@@ -13,11 +13,10 @@ publishTo := version { (v: String) =>
 }.value
 
 name := "play-ws-fakes"
-version := "0.1.2"
+version := "0.1.3-SNAPSHOT"
 description := "Play WS Test Fakes"
 organization := "com.servicerocket"
 organizationName := "ServiceRocket"
 organizationHomepage := Option(url("http://www.servicerocket.com"))
-
 
 libraryDependencies += "com.typesafe.play" %% "play-ahc-ws" % PlayWsVersion % Provided
