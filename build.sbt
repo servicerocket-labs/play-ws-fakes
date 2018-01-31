@@ -13,7 +13,7 @@ publishTo := version { (v: String) =>
 }.value
 
 name := "play-ws-fakes"
-version := "0.1.3"
+version := "0.1.4-SNAPSHOT"
 description := "Play WS Test Fakes"
 organization := "com.servicerocket"
 organizationName := "ServiceRocket"
