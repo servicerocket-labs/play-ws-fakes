@@ -4,6 +4,7 @@ scalaVersion := "2.12.4"
 
 val PlayWsVersion = "2.6.11"
 
+crossScalaVersions := Seq("2.11.12", "2.12.4")
 credentials += Credentials(Path.userHome / ".ivy2" / ".credentials")
 publishMavenStyle := true
 publishTo := version { (v: String) =>
