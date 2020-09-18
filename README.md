@@ -1,6 +1,6 @@
 Play WS Fakes
 =============
-[![Build Status](https://travis-ci.org/ServiceRocket/play-ws-fakes.svg?branch=master)](https://travis-ci.org/ServiceRocket/play-ws-fakes)
+[![Build Status](https://travis-ci.org/servicerocket-labs/play-ws-fakes.svg?branch=master)](https://travis-ci.org/servicerocket-labs/play-ws-fakes)
 
 Fake Play WS request and responses for testing purposes.
 ### Usage
