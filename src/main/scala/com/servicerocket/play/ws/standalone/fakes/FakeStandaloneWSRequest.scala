@@ -112,7 +112,7 @@ class FakeStandaloneWSRequest() extends StandaloneWSRequest {
     * @throws IllegalStateException In case of failed verifications.
     */
   def withHttpHeaders(headers: (String, String)*) = {
-    this.headers = headers.toMap.mapValues(Seq(_))
+    this.headers = headers.toMap.view.mapValues(Seq(_)).toMap
     expectedContentType match {
       case None =>
         this
@@ -201,6 +201,8 @@ class FakeStandaloneWSRequest() extends StandaloneWSRequest {
   override def contentType: Option[String] = expectedContentType
 
   override def cookies: Seq[WSCookie] = Seq()
+
+  override def withUrl(url: String): StandaloneWSRequest = this
 }
 
 /** Companion object containing helper factory methods.

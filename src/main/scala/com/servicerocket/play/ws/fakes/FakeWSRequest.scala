@@ -113,7 +113,7 @@ class FakeWSRequest() extends WSRequest {
     * @throws IllegalStateException In case of failed verifications.
     */
   def withHeaders(headers: (String, String)*) = {
-    this.headers = headers.toMap.mapValues(Seq(_))
+    this.headers = headers.toMap.view.mapValues(Seq(_)).toMap
     expectedContentType match {
       case None =>
         this
@@ -227,6 +227,8 @@ class FakeWSRequest() extends WSRequest {
   override def contentType: Option[String] = expectedContentType
 
   override def cookies: Seq[WSCookie] = Seq()
+
+  override def withUrl(url: String): WSRequest = this
 }
 
 /** Companion object containing helper factory methods.

@@ -1,10 +1,10 @@
 javacOptions ++= Seq("-source", "1.8", "-target", "1.8", "-Xlint")
 scalacOptions ++= Seq("-feature", "-target:jvm-1.8")
-scalaVersion := "2.12.12"
+scalaVersion := "2.13.5"
 
-val PlayWsVersion = "2.6.25"
+val PlayWsVersion = "2.7.9"
 
-crossScalaVersions := Seq("2.12.12")
+crossScalaVersions := Seq("2.12.12", "2.13.5")
 credentials += Credentials(Path.userHome / ".ivy2" / ".credentials")
 publishMavenStyle := true
 publishTo := version { (v: String) =>
@@ -14,7 +14,7 @@ publishTo := version { (v: String) =>
 }.value
 
 name := "play-ws-fakes"
-version := "0.1.4-SNAPSHOT"
+version := "0.1.5-M2"
 description := "Play WS Test Fakes"
 organization := "com.servicerocket"
 organizationName := "ServiceRocket"

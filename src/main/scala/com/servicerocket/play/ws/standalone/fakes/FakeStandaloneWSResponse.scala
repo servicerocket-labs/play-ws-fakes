@@ -6,6 +6,7 @@ import play.api.http.Status.OK
 import play.api.libs.json.{JsNull, JsValue}
 import play.api.libs.ws.{StandaloneWSResponse, WSCookie}
 
+import java.net.URI
 import scala.xml.Elem
 
 /** Fake StandaloneWSResponse for testing purposes.
@@ -27,6 +28,18 @@ case class FakeStandaloneWSResponse(status: Int = OK,
                                     headers: Map[String, Seq[String]] = Map())
   extends StandaloneWSResponse {
 
+  private var expectedURI: Option[URI] = None
+
+  /** Adds expected method to this fake class which will be checked later only if needed.
+    *
+    * @param toBe Expected URI.
+    * @return This class mutated with new expected method.
+    */
+  def expectURI(toBe: URI): FakeStandaloneWSResponse = {
+    expectedURI = Some(toBe)
+    this
+  }
+
   override def underlying[T]: T = null.asInstanceOf[T]
 
   override def header(key: String) = allHeaders.get(key).fold(None: Option[String])(xs => Some(xs.head))
@@ -42,6 +55,8 @@ case class FakeStandaloneWSResponse(status: Int = OK,
   override def bodyAsSource: Source[ByteString, _] = withBodySource
 
   def body: String = withBody.getOrElse(withJson.toString())
+
+  override def uri: URI = expectedURI.get
 }
 
 object FakeStandaloneWSResponse {
