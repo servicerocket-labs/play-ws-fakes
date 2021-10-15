@@ -1,6 +1,7 @@
 Play WS Fakes
 =============
 [![Build Status](https://travis-ci.org/servicerocket-labs/play-ws-fakes.svg?branch=master)](https://travis-ci.org/servicerocket-labs/play-ws-fakes)
+![GitHub Action](https://github.com/servicerocket-labs/play-ws-fakes/actions/workflows/ci.yml/badge.svg)
 
 Fake Play WS request and responses for testing purposes.
 ### Usage
@@ -23,4 +24,4 @@ import com.servicerocket.play.ws.fakes._
 | `0.1.1`        | `2.6.11`  | `2.12` |
 | `0.1.2`        | `2.6.11`  | `2.12` |
 | `0.1.3`        | `2.6.11`  | `2.12` |
-| `0.1.4`        | `2.7.3`   | `2.13`, `2.12` |
+| `0.1.4`        | `2.7.3`   | `2.12` |

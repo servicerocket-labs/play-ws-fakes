@@ -1,10 +1,10 @@
 javacOptions ++= Seq("-source", "1.8", "-target", "1.8", "-Xlint")
 scalacOptions ++= Seq("-feature", "-target:jvm-1.8")
-scalaVersion := "2.12.12"
+scalaVersion := "2.12.14"
 
 val PlayWsVersion = "2.6.25"
 
-crossScalaVersions := Seq("2.12.12")
+crossScalaVersions := Seq("2.12.14")
 credentials += Credentials(Path.userHome / ".ivy2" / ".credentials")
 publishMavenStyle := true
 publishTo := version { (v: String) =>
